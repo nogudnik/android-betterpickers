@@ -63,8 +63,7 @@
                         android:gravity="left"
                         android:padding="0dp" />
 
-                    <org.jraf.android.backport.switchwidget.Switch
-                        style="@style/Widget.Holo.Light.CompoundButton.Switch"
+                    <android.support.v7.widget.SwitchCompat
                         android:id="@+id/repeat_switch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
