@@ -13,8 +13,8 @@ gen/
 
 # Gradle files
 out/
-build/
-.gradle/
+build/*
+.gradle/*
 
 # idea project files
 *.iml
