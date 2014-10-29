@@ -1188,7 +1188,11 @@ public class RecurrencePickerDialog extends DialogFragment implements OnItemSele
                 copyModelToEventRecurrence(mModel, mRecurrence);
                 rrule = mRecurrence.toString();
             }
-            mRecurrenceSetListener.onRecurrenceSet(rrule);
+
+            if ( mRecurrenceSetListener != null ) {
+                mRecurrenceSetListener.onRecurrenceSet(rrule);
+            }
+            
             dismiss();
         }
     }
