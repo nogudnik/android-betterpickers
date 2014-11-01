@@ -817,11 +817,11 @@ public class DatePicker extends LinearLayout implements Button.OnClickListener,
      * @return a String array with all localized month abbreviations like JAN, FEB, etc.
      */
     public static String[] makeLocalizedMonthAbbreviations(Locale locale) {
-        final boolean hasLocale = locale != null;
-        final SimpleDateFormat monthAbbreviationFormat = hasLocale ? new SimpleDateFormat("MMM", locale)
-                : new SimpleDateFormat("MMM");
-        final Calendar date = hasLocale ? new GregorianCalendar(locale)
-                : new GregorianCalendar();
+        final Locale targetLocale = locale != null ? locale : Locale.getDefault();
+
+        final SimpleDateFormat monthAbbreviationFormat = new SimpleDateFormat("MMM", targetLocale)
+        final Calendar date = new GregorianCalendar(targetLocale);
+
         date.set(Calendar.YEAR, 0);
         date.set(Calendar.DAY_OF_MONTH, 1);
         date.set(Calendar.HOUR_OF_DAY, 0);
@@ -832,7 +832,7 @@ public class DatePicker extends LinearLayout implements Button.OnClickListener,
         final String[] months = new String[12];
         for (int i = 0; i < months.length; i++) {
             date.set(Calendar.MONTH, i);
-            months[i] = monthAbbreviationFormat.format(date.getTime()).toUpperCase();
+            months[i] = monthAbbreviationFormat.format(date.getTime()).toUpperCase(Locale.getDefault());
         }
         return months;
     }

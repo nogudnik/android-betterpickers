@@ -33,6 +33,7 @@ import com.doomonafireball.betterpickers.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Locale;
 
 public class TimeZoneFilterTypeAdapter extends BaseAdapter implements Filterable, OnClickListener {
 
@@ -188,7 +189,7 @@ public class TimeZoneFilterTypeAdapter extends BaseAdapter implements Filterable
             FilterResults results = new FilterResults();
             String prefixString = null;
             if (prefix != null) {
-                prefixString = prefix.toString().trim().toLowerCase();
+                prefixString = prefix.toString().trim().toLowerCase(Locale.getDefault());
             }
 
             if (TextUtils.isEmpty(prefixString)) {
@@ -229,7 +230,7 @@ public class TimeZoneFilterTypeAdapter extends BaseAdapter implements Filterable
             for (String country : mTimeZoneData.mTimeZonesByCountry.keySet()) {
                 // TODO Perf - cache toLowerCase()?
                 if (!TextUtils.isEmpty(country)) {
-                    final String lowerCaseCountry = country.toLowerCase();
+                    final String lowerCaseCountry = country.toLowerCase(Locale.getDefault());
                     boolean isMatch = false;
                     if (lowerCaseCountry.startsWith(prefixString)
                             || (lowerCaseCountry.charAt(0) == prefixString.charAt(0) &&

@@ -25,6 +25,7 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.widget.SwitchCompat;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -33,33 +34,15 @@ import android.text.format.Time;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TimeFormatException;
-import android.view.Display;
-import android.view.LayoutInflater;
-import android.view.View;
+import android.view.*;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
-import android.widget.AdapterView;
+import android.widget.*;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
-import android.widget.TableLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import com.doomonafireball.betterpickers.R;
 import com.doomonafireball.betterpickers.calendardatepicker.CalendarDatePickerDialog;
-
-import android.support.v7.widget.SwitchCompat;
 
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;
@@ -111,10 +94,10 @@ public class RecurrencePickerDialog extends DialogFragment implements OnItemSele
         /**
          * FREQ: Repeat pattern
          *
-         * @see FREQ_DAILY
-         * @see FREQ_WEEKLY
-         * @see FREQ_MONTHLY
-         * @see FREQ_YEARLY
+         * @see RecurrenceModel#FREQ_DAILY
+         * @see RecurrenceModel#FREQ_WEEKLY
+         * @see RecurrenceModel#FREQ_MONTHLY
+         * @see RecurrenceModel#FREQ_YEARLY
          */
         int freq = FREQ_WEEKLY;
 
@@ -126,11 +109,9 @@ public class RecurrencePickerDialog extends DialogFragment implements OnItemSele
         /**
          * UNTIL and COUNT: How does the the event end?
          *
-         * @see END_NEVER
-         * @see END_BY_DATE
-         * @see END_BY_COUNT
-         * @see untilDate
-         * @see untilCount
+         * @see RecurrenceModel#END_NEVER
+         * @see RecurrenceModel#END_BY_DATE
+         * @see RecurrenceModel#END_BY_COUNT
          */
         int end;
 
@@ -152,8 +133,8 @@ public class RecurrencePickerDialog extends DialogFragment implements OnItemSele
         /**
          * BYDAY AND BYMONTHDAY: How to repeat monthly events? Same date of the month or Same nth day of week.
          *
-         * @see MONTHLY_BY_DATE
-         * @see MONTHLY_BY_NTH_DAY_OF_WEEK
+         * @see RecurrenceModel#MONTHLY_BY_DATE
+         * @see RecurrenceModel#MONTHLY_BY_NTH_DAY_OF_WEEK
          */
         int monthlyRepeat;
 
@@ -1229,9 +1210,6 @@ public class RecurrencePickerDialog extends DialogFragment implements OnItemSele
         private boolean mUseFormStrings;
 
         /**
-         * @param context
-         * @param textViewResourceId
-         * @param objects
          */
         public EndSpinnerAdapter(Context context, ArrayList<CharSequence> strings,
                 int itemResourceId, int textResourceId) {

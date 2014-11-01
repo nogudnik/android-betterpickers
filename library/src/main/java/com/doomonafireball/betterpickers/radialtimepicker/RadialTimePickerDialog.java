@@ -119,7 +119,7 @@ public class RadialTimePickerDialog extends DialogFragment implements OnValueSel
     public interface OnTimeSetListener {
 
         /**
-         * @param RadialTimePickerDialog The view associated with this listener.
+         * @param dialog The view associated with this listener.
          * @param hourOfDay The hour that was set.
          * @param minute The minute that was set.
          */
@@ -410,7 +410,7 @@ public class RadialTimePickerDialog extends DialogFragment implements OnValueSel
     public void onValueSelected(int pickerIndex, int newValue, boolean autoAdvance) {
         if (pickerIndex == HOUR_INDEX) {
             setHour(newValue, false);
-            String announcement = String.format("%d", newValue);
+            String announcement = String.format(Locale.getDefault(), "%d", newValue);
             if (mAllowAutoAdvance && autoAdvance) {
                 setCurrentItemShowing(MINUTE_INDEX, true, true, false);
                 announcement += ". " + mSelectMinutes;
@@ -538,7 +538,7 @@ public class RadialTimePickerDialog extends DialogFragment implements OnValueSel
                     } else if (deleted == getAmOrPmKeyCode(PM)) {
                         deletedKeyStr = mPmText;
                     } else {
-                        deletedKeyStr = String.format("%d", getValFromKeyCode(deleted));
+                        deletedKeyStr = String.format(Locale.getDefault(), "%d", getValFromKeyCode(deleted));
                     }
                     Utils.tryAccessibilityAnnounce(mTimePicker,
                             String.format(mDeletedKeyFormat, deletedKeyStr));
@@ -658,7 +658,7 @@ public class RadialTimePickerDialog extends DialogFragment implements OnValueSel
     /**
      * Get out of keyboard mode. If there is nothing in typedTimes, revert to TimePicker's time.
      *
-     * @param changeDisplays If true, update the displays with the relevant time.
+     * @param updateDisplays If true, update the displays with the relevant time.
      */
     private void finishKbMode(boolean updateDisplays) {
         mInKbMode = false;
