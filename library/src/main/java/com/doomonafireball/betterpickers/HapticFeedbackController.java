@@ -1,7 +1,9 @@
 package com.doomonafireball.betterpickers;
 
+import android.Manifest;
 import android.app.Service;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.SystemClock;
@@ -16,8 +18,19 @@ public class HapticFeedbackController {
     private static final int VIBRATE_LENGTH_MS = 5;
 
     private static boolean checkGlobalSetting(Context context) {
+
+        // Check the see if the library has been granted permission to
+        // use the hardware VIRBRATE method. If it has not then this class
+        // will do nothing when asked to VIBRATE. Doing it this way mean that
+        // the app can decide whether or not to provide this permission, rather
+        // than having the library require it.
+        int result = context.checkCallingOrSelfPermission(Manifest.permission.VIBRATE);
+        if ( result != PackageManager.PERMISSION_GRANTED ) {
+            return false;
+        }
+
         return Settings.System.getInt(context.getContentResolver(),
-                Settings.System.HAPTIC_FEEDBACK_ENABLED, 0) == 1;
+                                      Settings.System.HAPTIC_FEEDBACK_ENABLED, 0) == 1;
     }
 
     private final Context mContext;

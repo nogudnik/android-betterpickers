@@ -2,14 +2,14 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 21
-    buildToolsVersion "21.0.2"
+    buildToolsVersion "21.1.0"
 
     defaultConfig {
         applicationId "com.doomonafireball.betterpickers"
         minSdkVersion 11
         targetSdkVersion 14
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
     }
 
     buildTypes {
