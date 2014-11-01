@@ -160,7 +160,7 @@ public class HmsPicker extends LinearLayout implements Button.OnClickListener, B
         for (int i = 0; i < 10; i++) {
             mNumbers[i].setOnClickListener(this);
             mNumbers[i].setText(String.format("%d", i));
-            mNumbers[i].setTag(R.id.numbers_key, new Integer(i));
+            mNumbers[i].setTag(R.id.numbers_key, Integer.valueOf(i));
         }
         updateHms();
 

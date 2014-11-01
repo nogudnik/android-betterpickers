@@ -179,7 +179,7 @@ public class NumberPicker extends LinearLayout implements Button.OnClickListener
         for (int i = 0; i < 10; i++) {
             mNumbers[i].setOnClickListener(this);
             mNumbers[i].setText(String.format("%d", i));
-            mNumbers[i].setTag(R.id.numbers_key, new Integer(i));
+            mNumbers[i].setTag(R.id.numbers_key, Integer.valueOf(i));
         }
         updateNumber();
 
