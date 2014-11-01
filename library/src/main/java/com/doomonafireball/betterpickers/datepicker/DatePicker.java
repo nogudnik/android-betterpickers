@@ -819,7 +819,7 @@ public class DatePicker extends LinearLayout implements Button.OnClickListener,
     public static String[] makeLocalizedMonthAbbreviations(Locale locale) {
         final Locale targetLocale = locale != null ? locale : Locale.getDefault();
 
-        final SimpleDateFormat monthAbbreviationFormat = new SimpleDateFormat("MMM", targetLocale)
+        final SimpleDateFormat monthAbbreviationFormat = new SimpleDateFormat("MMM", targetLocale);
         final Calendar date = new GregorianCalendar(targetLocale);
 
         date.set(Calendar.YEAR, 0);
