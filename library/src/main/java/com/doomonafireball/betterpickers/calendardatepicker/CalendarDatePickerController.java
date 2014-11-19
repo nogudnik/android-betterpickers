@@ -22,7 +22,7 @@ import com.doomonafireball.betterpickers.calendardatepicker.MonthAdapter.Calenda
 /**
  * Controller class to communicate among the various components of the date picker dialog.
  */
-interface CalendarDatePickerController {
+public interface CalendarDatePickerController {
 
     void onYearSelected(int year);
 
