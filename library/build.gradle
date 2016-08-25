@@ -1,20 +1,21 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.0"
+    compileSdkVersion project.hasProperty("compileSdkVersion") ? rootProject.compileSdkVersion : 21
+    buildToolsVersion project.hasProperty("buildToolsVersion") ? rootProject.buildToolsVersion : '21.1.0'
 
     defaultConfig {
-        applicationId "com.doomonafireball.betterpickers"
-        minSdkVersion 14 // 14 = ICS Android 4.0.0
-        targetSdkVersion 21
+        // applicationId "com.doomonafireball.betterpickers"
+        minSdkVersion    project.hasProperty("minSdkVersion") ? rootProject.minSdkVersion : 14 // 14 = ICS Android 4.0.0
+        targetSdkVersion project.hasProperty("targetSdkVersion") ? rootProject.targetSdkVersion : 21
+
         versionCode 1
         versionName "1.0.0"
     }
 
     buildTypes {
         release {
-            runProguard false
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
