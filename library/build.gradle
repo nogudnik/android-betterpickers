@@ -1,13 +1,13 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion project.hasProperty("compileSdkVersion") ? rootProject.compileSdkVersion : 21
-    buildToolsVersion project.hasProperty("buildToolsVersion") ? rootProject.buildToolsVersion : '21.1.0'
+    compileSdkVersion project.hasProperty("compileSdkVersion") ? rootProject.compileSdkVersion : 24
+    buildToolsVersion project.hasProperty("buildToolsVersion") ? rootProject.buildToolsVersion : '24.0.2'
 
     defaultConfig {
         // applicationId "com.doomonafireball.betterpickers"
         minSdkVersion    project.hasProperty("minSdkVersion") ? rootProject.minSdkVersion : 14 // 14 = ICS Android 4.0.0
-        targetSdkVersion project.hasProperty("targetSdkVersion") ? rootProject.targetSdkVersion : 21
+        targetSdkVersion project.hasProperty("targetSdkVersion") ? rootProject.targetSdkVersion : 24
 
         versionCode 1
         versionName "1.0.0"
@@ -40,7 +40,7 @@ repositories {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:support-v4:21.0.+'
-    compile 'com.android.support:appcompat-v7:21.0+'
+    compile 'com.android.support:support-v4:24.2.+'
+    compile 'com.android.support:appcompat-v7:24.2+'
     compile 'com.nineoldandroids:library:2.4.0'
 }
